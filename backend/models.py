@@ -9,6 +9,9 @@ class User(_database.Base):
     id=_sql.Column(_sql.Integer,primary_key=True,index=True)
     email=_sql.Column(_sql.String,unique=True,index=True)
     hashed_password=_sql.Column(_sql.String)
+    
+    image_orm=_orm.relationship("Images",back_populates="owner")
+
     def verify_password( self ,password):
        return _hash.bcrypt.verify(password,self.hashed_password)
 class Images(_database.Base):
@@ -19,3 +22,5 @@ class Images(_database.Base):
     text=_sql.Column(_sql.String,index=True) # the text which will be extracted from image
     date_created=_sql.Column(_sql.DateTime,default=dt.datetime.utcnow)
     date_last_updated=_sql.Column(_sql.DateTime,default=dt.datetime.utcnow)
+
+    owner=_orm.relationship("User",back_populates="image_orm")
