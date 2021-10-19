@@ -1,5 +1,5 @@
 # ImageToCode 
-1.Database :SQLAlchemy </br>
+1.Database :SQLAlchemy (SQLite)</br>
 2.Backend :FastAPI </br>
 3.Frontend:React.js </br>
 4.User Authentication </br>
